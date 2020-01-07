@@ -8,7 +8,7 @@
     "build": "rm -rf ./build && babel -d ./build ./src -s",
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "coverage": "nyc npm test && npm run generate-lcov",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
