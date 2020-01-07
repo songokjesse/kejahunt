@@ -1,2 +1,2 @@
 # kejahunt
-Express PostgreSQL Back-end (CRUD (Users,Posts,Comments)) 
+Express PostgreSQL Sequelize Back-end (CRUD (Users,Posts,Comments)) 
