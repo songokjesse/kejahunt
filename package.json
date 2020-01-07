@@ -5,6 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha  --timeout 20000 --exit",
+    "build": "rm -rf ./build && babel -d ./build ./src -s",
+    "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
+    "coverage": "nyc npm test && npm run generate-lcov",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -12,10 +15,13 @@
   "license": "ISC",
   "dependencies": {
     "@babel/register": "^7.7.7",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
+    "coveralls": "^3.0.9",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
