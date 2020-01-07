@@ -1,9 +1,13 @@
 const express = require('express');
 const logger = require('morgan');
+const helmet = require('helmet');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const  app = express();
 
 app.use(logger('dev'));
+app.use(cors());
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
@@ -15,6 +19,11 @@ app.use((req,res,next)=>{
   next();
 });
 
+// app.get('*', (req,res)=>{
+//   res.status(200).send({
+//     message: "KejaHunt API"
+//   })
+// });
 //catch 404 and forward to error handler
 app.use((req,res,next)=>{
   let err = new Error('Not Found');
