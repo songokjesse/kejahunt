@@ -1,4 +1,5 @@
 const {Router} = require('express');
+const PostRoutes = require('../routes/posts');
 const router = Router();
 
 router.get('/', (req,res)=> {
@@ -6,5 +7,8 @@ router.get('/', (req,res)=> {
     message: "KejaHunt API"
   })
 });
+
+// Post routes
+router.use('/posts', PostRoutes);
 
 module.exports = router;
