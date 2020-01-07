@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+const routes = require('../src/routes');
 const  app = express();
 
 app.use(logger('dev'));
@@ -18,6 +18,10 @@ app.use((req,res,next)=>{
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH,OPTIONS');
   next();
 });
+
+// API ROUTES
+app.use('/api/v1', routes);
+
 
 // app.get('*', (req,res)=>{
 //   res.status(200).send({
