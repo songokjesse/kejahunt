@@ -18,12 +18,14 @@ module.exports = {
         {
           name: 'Jane Doe',
           email: 'janedoe@example.com',
+          password: 'password',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: 'Jon Doe',
           email: 'jondoe@example.com',
+          password: 'password',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

@@ -9,7 +9,6 @@ module.exports = (req, res, next) => {
   }
   const decodedToken = jwt.verify(token,  process.env.SECRET);
   const userId = decodedToken.id;
-  console.log(userId);
  Model.User.findOne({ where : {'id': userId}}).then( (results)=> {
    if (!results) {
      res.status(401)

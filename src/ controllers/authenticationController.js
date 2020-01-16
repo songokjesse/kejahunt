@@ -87,7 +87,6 @@ const UserLogin = [
           req.body.password,
           user.password
         );
-        console.log(passwordIsValid);
         //
         if (!passwordIsValid) {
           return res.status(401).send({
@@ -101,7 +100,7 @@ const UserLogin = [
           res.status(200).send({
                 id: user.id,
                 email: user.email,
-                accessToken: token
+                token: token
               });
         }
       })
