@@ -1,12 +1,13 @@
 const {Router} = require('express');
 const postController = require('../ controllers/postController');
+const VerifyToken = require('../middleware/AuthMiddleware');
 const router = Router();
 
-router.post('/', postController.createPost);
+router.post('/',  VerifyToken, postController.createPost);
 router.get('/', postController.getAllPosts);
-router.get('/:postId', postController.getPostById);
-router.put('/:postId', postController.updatePost);
-router.delete('/:postId', postController.deletePost);
+router.get('/:postId', VerifyToken, postController.getPostById);
+router.put('/:postId', VerifyToken, postController.updatePost);
+router.delete('/:postId', VerifyToken, postController.deletePost);
 
 
 

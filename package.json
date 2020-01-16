@@ -6,9 +6,10 @@
   "scripts": {
     "test": "export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha  --timeout 20000 --exit",
     "build": "rm -rf ./build && babel -d ./build ./src -s",
+    "lint": "eslint",
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "coverage": "nyc npm test && npm run generate-lcov",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "@babel/register": "^7.7.7",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
+    "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
@@ -24,7 +26,9 @@
     "coveralls": "^3.0.9",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.3.1",
     "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
     "mocha": "^7.0.0",
     "morgan": "^1.9.1",
     "nyc": "^15.0.0",
@@ -33,5 +37,10 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.3",
     "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0"
   }
 }
