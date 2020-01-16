@@ -32,7 +32,7 @@ describe('/POST Create User', ()=>{
   it("Post to /auth/create-user to check  if user is persisted into the database", (done)=>{
     let user = {
       name : "Jesse Songok",
-      email : "janedoe@example.com",
+      email : "sjanedoe@example.com",
       password : "password",
       confirmPassword : "password",
     };
