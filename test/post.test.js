@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 const {expect} = chai;
 let UserData = {
-  email: 'jesse@gmail.com',
+  email: 'janedoe@example.com',
   password: 'password'
 };
 describe('/POST Create User', ()=>{
@@ -32,7 +32,7 @@ describe('/POST Create User', ()=>{
   it("Post to /auth/create-user to check  if user is persisted into the database", (done)=>{
     let user = {
       name : "Jesse Songok",
-      email : "jesse@gmail.com",
+      email : "janedoe@example.com",
       password : "password",
       confirmPassword : "password",
     };
