@@ -86,7 +86,7 @@ describe('Testing the posts endpoints:', () => {
     });
 
     it('It should get a particular post', (done) => {
-        const postId = 2;
+        const postId = 1;
       chai.request(app)
         .post('/api/v1/auth/login')
         .send(UserData)

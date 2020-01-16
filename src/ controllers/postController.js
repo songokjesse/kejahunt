@@ -2,7 +2,6 @@ const models = require('../models');
 
 const createPost = async (req,res)=> {
     try {
-console.log(req.user);
         const thePost = {
             userId: req.user,
             title: req.body.title,
