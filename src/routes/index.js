@@ -10,9 +10,6 @@ router.get('/', (req,res)=> {
   })
 });
 
-// User routes
-// router.use('/users', UserRoutes);
-
 // Authentication routes
 router.use('/auth', AuthRoutes);
 
