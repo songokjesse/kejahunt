@@ -29,25 +29,25 @@ describe('/POST Create User', ()=>{
         done();
       });
   });
-  it("Post to /auth/create-user to check  if user is persisted into the database", (done)=>{
-    let user = {
-      name : "Jesse Songok",
-      email : "sjanedoe@example.com",
-      password : "password",
-      confirmPassword : "password",
-    };
-    chai
-      .request(app)
-      .post("/api/v1/auth/signup")
-      .send(user)
-      .end((err, res) => {
-        expect(res).to.have.status(201);
-        done();
-      });
-  });
-
-
-});
+//   it("Post to /auth/create-user to check  if user is persisted into the database", (done)=>{
+//     let user = {
+//       name : "Jesse Songok",
+//       email : "sjanedoe@example.com",
+//       password : "password",
+//       confirmPassword : "password",
+//     };
+//     chai
+//       .request(app)
+//       .post("/api/v1/auth/signup")
+//       .send(user)
+//       .end((err, res) => {
+//         expect(res).to.have.status(201);
+//         done();
+//       });
+//   });
+//
+//
+ });
 
 describe('Testing the posts endpoints:', () => {
   it('It should create a posts', (done) => {
