@@ -1,5 +1,7 @@
 const {Router} = require('express');
 const PostRoutes = require('../routes/posts');
+const UserRoutes = require('../routes/users');
+const AuthRoutes = require('../routes/Authentication');
 const router = Router();
 
 router.get('/', (req,res)=> {
@@ -7,6 +9,12 @@ router.get('/', (req,res)=> {
     message: "KejaHunt API"
   })
 });
+
+// User routes
+// router.use('/users', UserRoutes);
+
+// Authentication routes
+router.use('/auth', AuthRoutes);
 
 // Post routes
 router.use('/posts', PostRoutes);
