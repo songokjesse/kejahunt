@@ -7,9 +7,47 @@ chai.use(chaiHttp);
 
 const {expect} = chai;
 let UserData = {
-  email: 'janedoe@example.com',
+  email: 'jesse@gmail.com',
   password: 'password'
 };
+describe('/POST Create User', ()=>{
+  it("Post to /auth/create-user to check if it validates for blank fields", (done)=>{
+
+    let user = {
+      name : "",
+      email : "",
+      password : "",
+      confirmPassword : "",
+    };
+    chai
+      .request(app)
+      .post("/api/v1/auth/signup")
+      .send(user)
+      .end((err, res) => {
+        expect(res).to.have.status(422);
+        expect(res).to.be.a('object');
+        done();
+      });
+  });
+  it("Post to /auth/create-user to check  if user is persisted into the database", (done)=>{
+    let user = {
+      name : "Jesse Songok",
+      email : "jesse@gmail.com",
+      password : "password",
+      confirmPassword : "password",
+    };
+    chai
+      .request(app)
+      .post("/api/v1/auth/signup")
+      .send(user)
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        done();
+      });
+  });
+
+
+});
 
 describe('Testing the posts endpoints:', () => {
   it('It should create a posts', (done) => {

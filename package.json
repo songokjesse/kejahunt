@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha  --timeout 20000 --exit",
+    "test": "export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && sequelize db:seed:all  && nyc --require @babel/register  mocha  --timeout 20000 --exit",
     "build": "rm -rf ./build && babel -d ./build ./src -s",
     "lint": "eslint",
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
