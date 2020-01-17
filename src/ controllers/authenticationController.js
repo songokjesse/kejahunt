@@ -82,27 +82,38 @@ const UserLogin = [
             message: 'Authentication failed. Check User details.',
           });
         }
+        user.comparePassword(req.body.password, (err, isMatch) => {
+          if(isMatch && !err) {
+            var token = jwt.sign(JSON.parse(JSON.stringify(user)), process.env.SECRET, {expiresIn: 86400 * 30});
+            jwt.verify(token, process.env.SECRET, function(err, data){
+              console.log(err, data);
+            })
+            res.json({success: true, token: 'JWT ' + token});
+          } else {
+            res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
+          }
+        })
 
-        const passwordIsValid = bcrypt.compareSync(
-          req.body.password,
-          user.password
-        );
-        //
-        if (!passwordIsValid) {
-          return res.status(401).send({
-            accessToken: null,
-            message: "Invalid Password!"
-          });
-        } else {
-          const token = jwt.sign({ id: user.id }, process.env.SECRET, {
-            expiresIn: 86400 // 24 hours
-          });
-          res.status(200).send({
-                id: user.id,
-                email: user.email,
-                token: token
-              });
-        }
+        // const passwordIsValid = bcrypt.compareSync(
+        //   req.body.password,
+        //   user.password
+        // );
+        // //
+        // if (!passwordIsValid) {
+        //   return res.status(401).send({
+        //     accessToken: null,
+        //     message: "Invalid Password!"
+        //   });
+        // } else {
+        //   const token = jwt.sign({ id: user.id }, process.env.SECRET, {
+        //     expiresIn: 86400 // 24 hours
+        //   });
+        //   res.status(200).send({
+        //         id: user.id,
+        //         email: user.email,
+        //         token: token
+        //       });
+        // }
       })
       .catch((error) => res.status(400).send(error));
   }
