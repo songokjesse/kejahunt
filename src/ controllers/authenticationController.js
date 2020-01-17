@@ -82,7 +82,6 @@ const UserLogin = [
             message: 'Authentication failed. Check User details.',
           });
         }
-
         const passwordIsValid = bcrypt.compareSync(
           req.body.password,
           user.password
@@ -93,7 +92,7 @@ const UserLogin = [
             accessToken: null,
             message: "Invalid Password!"
           });
-        } else {
+        }
           const token = jwt.sign({ id: user.id }, process.env.SECRET, {
             expiresIn: 86400 // 24 hours
           });
@@ -102,7 +101,6 @@ const UserLogin = [
                 email: user.email,
                 token: token
               });
-        }
       })
       .catch((error) => res.status(400).send(error));
   }
